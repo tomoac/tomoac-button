@@ -44,9 +44,11 @@
 <!-- ================ Twitter ================ -->
 <div id="ccm-button-twitter-tab">
 <?php
-//	print_r($_REQUEST);
 	echo '<br /><table>';
-	echo '<tr><td>'.'Twitterボタン非表示'.'</td><td>'.$form->checkbox('buttontw', '1', $buttontw)."</td></tr>";
+	echo '<tr><td>';
+	echo $form->radio('buttontw','on',($buttontw == 'on') or (!$buttontw)) . '表示';
+	echo $form->radio('buttontw','off',($buttontw == 'off')) . '非表示';
+	echo '</td></tr>';
 	echo '<tr><td>'.'ユーザ名'.'</td><td>'.'&nbsp;'.$form->text('user', $user)."</td></tr>";
 	echo '<tr><td>'.'数の表示'.'</td><td>'.$form->checkbox('counter', '1', $counter)."</td></tr>";
 	echo '<tr><td>'.'ボタンサイズ（大）'.'</td><td>'.$form->checkbox('buttonbig', '1', $buttonbig)."</td></tr>";
@@ -57,14 +59,17 @@
 <!-- ================ Google+1 ================ -->
 <div id="ccm-button-googleplusone-tab" style="display:none">
 <?php
-//	print_r($_REQUEST);
 	echo '<br /><table>';
-	echo '<tr><td>'.'Google+1ボタン非表示'.'</td><td>'.$form->checkbox('buttongp', '1', $buttongp)."</td></tr>";
+
+	echo '<tr><td>';
+	echo $form->radio('buttongp','on',($buttongp == 'on') or (!$buttongp)) . '表示';
+	echo $form->radio('buttongp','of',($buttongp == 'off')) . '非表示';
+	echo '</td></tr>';
 	echo '<tr><td>'.'ボタンサイズ'.'</td><td>'.$form->select('buttonsize', array(
 							'small'=>'小（15px）',
 							'medium'=>'中（20px）',
 							''=>'標準（24px）',
-							'tall'=>'大（60px）+1 情報'), $buttonsize)."</td></tr>";
+							'tall'=>'大（60px）+1 情報'), $buttonsize).'</td></tr>';
 	echo '</table>';
 ?>
 </div>
@@ -72,9 +77,11 @@
 <!-- ================ Hatena ================ -->
 <div id="ccm-button-hatena-tab" style="display:none">
 <?php
-//	print_r($_REQUEST);
 	echo '<br /><table>';
-	echo '<tr><td>'.'Hatenaボタン非表示'.'</td><td>'.$form->checkbox('buttonha', '1', $buttonha)."</td></tr>";
+	echo '<tr><td>';
+	echo $form->radio('buttonha','on',($buttonha == 'on') or (!$buttonha)) . '表示';
+	echo $form->radio('buttonha','of',($buttonha == 'off')) . '非表示';
+	echo '</td></tr>';
 	echo '<tr><td>'.'ボタンタイプ'.'</td><td>'.$form->select('buttontype', array(
 							'standard'=>'スタンダード',
 							'vertical'=>'バーティカルボタン',
@@ -86,9 +93,11 @@
 <!-- ================ Mixi ================ -->
 <div id="ccm-button-mixi-tab" style="display:none">
 <?php
-//	print_r($_REQUEST);
 	echo '<br /><table>';
-	echo '<tr><td>'.'mixiボタン非表示'.'</td><td>'.$form->checkbox('buttonmx', '1', $buttonmx)."</td></tr>";
+	echo '<tr><td>';
+	echo $form->radio('buttonmx','on',($buttonmx == 'on') or (!$buttonmx)) . '表示';
+	echo $form->radio('buttonmx','of',($buttonmx == 'off')) . '非表示';
+	echo '</td></tr>';
 	echo '<tr><td>'.'mixiチェックキー'.'</td><td>'.'&nbsp;'.$form->text('mxkey', $mxkey)."</td></tr>";
 	echo '<tr><td>'.'mixiボタンタイプ'.'</td><td>'.$form->select('mxbtntype', array(
 							'button-1'=>'button-1',
@@ -104,9 +113,11 @@
 <!-- ================ Facebook ================ -->
 <div id="ccm-button-facebook-tab" style="display:none">
 <?php
-//	print_r($_REQUEST);
 	echo '<br /><table>';
-	echo '<tr><td>'.'Facebookボタン非表示'.'</td><td>'.$form->checkbox('buttongp', '1', $buttongp)."</td></tr>";
+	echo '<tr><td>';
+	echo $form->radio('buttonfb','on',($buttonfb == 'on') or (!$buttonfb)) . '表示';
+	echo $form->radio('buttonfb','of',($buttonfb == 'off')) . '非表示';
+	echo '</td></tr>';
 	echo '<tr><td>'.'AppID'.'</td><td>'.'&nbsp;'.$form->text('fbuser', $fbuser) . "</td></tr>";
 	echo '</table>';
 ?>

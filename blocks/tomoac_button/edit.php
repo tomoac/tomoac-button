@@ -1,5 +1,3 @@
-<?php defined('C5_EXECUTE') or die(_("Access Denied."));
+<?php  defined('C5_EXECUTE') or die(_("Access Denied.")); ?>
+<?php $this->inc('form_setup_html.php');
 
-$controllerObj=$controller;
-
-include($this->getBlockPath() . '/form_setup_html.php'); ?> 

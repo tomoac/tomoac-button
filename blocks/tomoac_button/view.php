@@ -1,54 +1,12 @@
 <?php  defined('C5_EXECUTE') or die(_("Access Denied."));
 
-	$lc = Page::getByID($linkID);
-	$c = Page::getCurrentPage();
-	$path = $lc->getCollectionPath();
-	if(!empty($path)) {
-		$path = "/index.php?cID=".$lc->cID; 
-	}
-
-	$db = Loader::db();
-	if(intval($this->bID) > 0) {
-		$q = $db->query("select * FROM btButtonTomoac WHERE bID = ".$this->bID." LIMIT 1");
-		$row = $q->fetchRow();
-
-		$buttontw = $row['buttontw'];
-		$counter = $row['counter'];
-		$user = $row['user'];
-		$user2 = $row['user2'];
-		$buttonbig = $row['buttonbig'];
-		$hashtag = $row['hashtag'];
-		$lang = $row['lang'];
-
-		$buttongp = $row['buttongp'];
-		$buttonsize = $row['buttonsize'];
-		$annotation = $row['annotation'];
-
-		$buttonfb = $row['buttonfb'];
-		$fbuser = $row['fbuser'];
-		$appid = $row['appid'];
-
-		$buttonha = $row['buttonha'];
-		$buttontype = $row['buttontype'];
-		$haurl = $row['haurl'];
-		$hattl = $row['hattl'];
-
-		$buttonmx = $row['buttonmx'];
-		$mxbtntype = $row['mxbtntype'];
-		$mxkey = $row['mxkey'];
-	}
 	if(strlen($buttonsize) == 0)
 		$size = '';
 	else
 		$size = 'size="'.$buttonsize.'"';
 ?>
-
-<?php
-	$page = Page::getCurrentPage();
-	$url = BASE_URL . DIR_REL . $page->getCollectionPath();
-?>
-
 <div>
+
 <table border="0"><tr><td>
 
 <!-- ================  Twitter ================  -->

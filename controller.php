@@ -5,7 +5,7 @@ class TomoacButtonPackage extends Package {
 
      protected $pkgHandle = 'tomoac_button';
      protected $appVersionRequired = '5.4.0';
-     protected $pkgVersion = '0.4.3';
+     protected $pkgVersion = '0.5.0';
 
      public function getPackageDescription() {
           return t('Tomoac Button');

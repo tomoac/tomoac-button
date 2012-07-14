@@ -1,33 +1,11 @@
 <?xml version="1.0"?>
 <schema version="0.3">
-	<table name="btButtonTomoac">
+	<table name="btTomoacButton">
 		<field name="bID" type="I">
 			<key />
 			<unsigned />
 		</field>
-		<field name="buttontw" type="C" size="255" />
-		<field name="counter" type="C" size="255" />
-		<field name="user" type="C" size="255" />
-		<field name="user2" type="C" size="255" />
-		<field name="hashtag" type="C" size="255" />
-		<field name="buttonbig" type="C" size="255" />
-		<field name="lang" type="C" size="255" />
-
-		<field name="buttongp" type="C" size="255" />
-		<field name="buttonsize" type="C" size="255" />
-		<field name="annotation" type="C" size="255" />
-
-		<field name="buttonfb" type="C" size="255" />
-		<field name="fbuser" type="C" size="255" />
-		<field name="appid" type="C" size="255" />
-
-		<field name="buttonha" type="C" size="255" />
-		<field name="buttontype" type="C" size="255" />
-		<field name="haurl" type="C" size="255" />
-		<field name="hattl" type="C" size="255" />
-
-		<field name="buttonmx" type="C" size="255" />
-		<field name="mxbtntype" type="C" size="255" />
-		<field name="mxkey" type="C" size="255" />
+		<field name="contents" type="X" />
+		<field name="options" type="X" />
 	</table>
 </schema>

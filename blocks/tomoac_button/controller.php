@@ -17,8 +17,8 @@ class TomoacButtonBlockController extends BlockController {
 
 	function view(){
 		
-		error_log('view bid='.$this->bID,0);
-		
+//		error_log('view bid='.$this->bID,0);
+
 		$page = Page::getCurrentPage();
 		$url = BASE_URL . DIR_REL . $page->getCollectionPath();
 
@@ -138,7 +138,7 @@ class TomoacButtonBlockController extends BlockController {
 
 	function save( $data ) {
 
-		error_log('save bid='.$this->bID,0);
+//		error_log('save bid='.$this->bID,0);
 
 		$bID = $this->bID;
 		$contents = array();

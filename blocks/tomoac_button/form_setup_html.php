@@ -3,11 +3,6 @@
 	$form = Loader::helper('form');
 	$db = Loader::db();
 
-	if($b != '' && intval($b->getBlockID()) > 0)
-		error_log('a=',$b->getBlockID(),0);
-	if($bID > 0)
-		error_log('b='.$bID,0);
-
 //	if(($bID > 0)||($b != '' && intval($b->getBlockID()) > 0)) {
 	if($bID > 0) {
 		$rows = $db->query("SELECT * FROM btTomoacButton WHERE bID=$bID LIMIT 1");
@@ -22,7 +17,6 @@
 <ul class="ccm-dialog-tabs" id="ccm-button-tabs">
 <?php
 	if($bID > 0) {
-		error_log('count='.count($option),0);
 		$i = 0;
 		foreach($option as $op) {
 			echo ($i == 0) ? '<li class="ccm-nav-active">' : '<li>';
@@ -201,6 +195,10 @@
 <!-- ================ Options ================ -->
 <div id="ccm-button-option-tab" style="display:none">
 <?php
+
+	$th = Loader::helper('concrete/urls');
+	$ajax_url = "'" . BASE_URL . $th->getToolsURL('order.php', 'tomoac_button') ."'";
+
 	if($bID > 0) {
 
 		echo '
@@ -243,7 +241,7 @@ function saveOrder(t, bid){
 	$.ajax({ 
 		type: 'POST',
 		data: postStr,
-		url: 'http://test.tomo.ac/concrete5.5.2.1.ja_devel/index.php/tools/blocks/tomoac_button/order.php',
+		url: ".$ajax_url.",
 		success: function(msg){	
 //			alert(msg);
 		}
@@ -254,11 +252,11 @@ function saveOrder(t, bid){
 -->
 </script>
 ';
-		echo '<br /><table>'."\n";
+		echo '<br />'.t('Change Order').'<table width=30%">'."\n";
 		$i = 0;
 		foreach($option as $op) {
 			if(empty($op)) continue;
-			echo '<tr><td id="'.$i.'">';
+			echo '<tr><td>&nbsp;'.($i+1).'.&nbsp;</td><td id="'.$i.'">';
 			echo $op;
 			echo '</td><td>';
 			echo '<a onclick="moveUp('.$i.','.$bID.');  return false" class="moveUpLink"></a>';

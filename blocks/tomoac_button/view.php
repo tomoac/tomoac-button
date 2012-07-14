@@ -1,12 +1,14 @@
 <?php  defined('C5_EXECUTE') or die(_("Access Denied.")); ?>
 
+<!--
 <div>
 <table border="0"><tr><td>
+-->
 <?php
 	$option = explode('/', $options);
 	foreach($option as $op) {
 
-		echo '<div style="float:left;">';
+//		echo '<div style="float:left;">';
 		switch ($op) {
 
 		case 'twitter':
@@ -29,8 +31,10 @@
 			echo $facebook;	/* Facebook */
 			break;
 		}
-		echo '</div>';
+//		echo '</div>';
 	}
 ?>
+<!--
 </td></tr></table>
 </div>
+-->

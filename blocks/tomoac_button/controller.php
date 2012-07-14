@@ -34,10 +34,14 @@ class TomoacButtonBlockController extends BlockController {
 		$contents = json_decode( $row{'contents'} );
 
 		$options = $row{'options'};
+		if(empty($options))
+			$options = "twitter/googleplusone/hatena/mixi/facebook";
 		$this->set('options',$options);
 
+
 		foreach($contents as $content) {
-//			error_log($content->{'kinda'},0);
+//			error_log($content->{'kinda'}.'('.$content->{'onoff'}.')',0);
+
 			if($content->{'onoff'} == 'off')
 				continue;
 
@@ -97,14 +101,15 @@ class TomoacButtonBlockController extends BlockController {
 
 			case 'mixi':			// ====== Mixi ===== //
 
-				if(strlen($content->{'key'}) != 0)
+				if(strlen($content->{'key'}) != 0) {
 					$html = '
 <!-- start mixi -->
 <a href="http://mixi.jp/share.pl" class="mixi-check-button" data-key="'.$content->{'key'}.'" data-url="'.$url.'" data-button="'.$content->{'buttontype'}.'">mixiチェック</a>
 <script type="text/javascript" src="http://static.mixi.jp/js/share.js"></script>
 <!-- end mixi -->
 ';
-				$this->set('mixi',$html);
+					$this->set('mixi',$html);
+				}
 				break;
 
 			case 'facebook':		// ====== Facebook ===== //
@@ -196,7 +201,7 @@ class TomoacButtonBlockController extends BlockController {
 
 		if( intval($total) == 0 ) { 
 			$vals = array( intval($bID), $contents);
-			$db->query("INSERT INTO btTomoacButton (bID, contents ) values (?,?,?)", $vals);
+			$db->query("INSERT INTO btTomoacButton (bID, contents ) values (?,?)", $vals);
 		} else {
 			$vals = array( $contents, intval($bID));
 			$db->query("UPDATE btTomoacButton set contents=? WHERE bID=?", $vals);

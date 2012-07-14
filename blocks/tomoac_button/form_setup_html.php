@@ -13,21 +13,21 @@
 		if(count($option) <= 1)
 			$option = array('twitter','googleplusone','hatena','mixi','facebook') ;
 	}
+	else
+		$option = array('twitter','googleplusone','hatena','mixi','facebook') ;
 ?>
 <ul class="ccm-dialog-tabs" id="ccm-button-tabs">
 <?php
-	if($bID > 0) {
-		$i = 0;
-		foreach($option as $op) {
-			echo ($i == 0) ? '<li class="ccm-nav-active">' : '<li>';
-			if($op == 'twitter') 		echo '<a href="javascript:void(0)" id="ccm-button-twitter">'.t('Twitter').'</a>';
-			if($op == 'googleplusone')	echo '<a href="javascript:void(0)" id="ccm-button-googleplusone">'.t('Google+1').'</a>';
-			if($op == 'hatena')			echo '<a href="javascript:void(0)" id="ccm-button-hatena">'.t('Hatena').'</a>';
-			if($op == 'mixi')			echo '<a href="javascript:void(0)" id="ccm-button-mixi">'.t('Mixi').'</a>';
-			if($op == 'facebook')		echo '<a href="javascript:void(0)" id="ccm-button-facebook">'.t('Facebook').'</a>';
-			echo '</li>';
-			$i++;
-		}
+	$i = 0;
+	foreach($option as $op) {
+		echo ($i == 0) ? '<li class="ccm-nav-active">' : '<li>';
+		if($op == 'twitter') 		echo '<a href="javascript:void(0)" id="ccm-button-twitter">'.t('Twitter').'</a>';
+		if($op == 'googleplusone')	echo '<a href="javascript:void(0)" id="ccm-button-googleplusone">'.t('Google+1').'</a>';
+		if($op == 'hatena')			echo '<a href="javascript:void(0)" id="ccm-button-hatena">'.t('Hatena').'</a>';
+		if($op == 'mixi')			echo '<a href="javascript:void(0)" id="ccm-button-mixi">'.t('Mixi').'</a>';
+		if($op == 'facebook')		echo '<a href="javascript:void(0)" id="ccm-button-facebook">'.t('Facebook').'</a>';
+		echo '</li>';
+		$i++;
 	}
 ?>
 	<li><a href="javascript:void(0)" id="ccm-button-option"><?php   echo t('Option')?></a></li>
@@ -130,7 +130,7 @@
 	echo $form->radio('mixi_onoff','on',($mixi_onoff == 'on') or (!$mixi_onoff)) . '表示';
 	echo $form->radio('mixi_onoff','of',($mixi_onoff == 'off')) . '非表示';
 	echo '</td></tr>';
-	echo '<tr><td>'.'mixiチェックキー'.'</td><td>'.'&nbsp;'.$form->text('mixi_key', $mixi_key)."</td></tr>";
+	echo '<tr><td>'.'mixiチェックキー(必須)'.'</td><td>'.'&nbsp;'.$form->text('mixi_key', $mixi_key)."</td></tr>";
 	echo '<tr><td>'.'mixiボタンタイプ'.'</td><td>'.$form->select('mixi_buttontype', array(
 							'button-1'=>'button-1',
 							'button-2'=>'button-2',
@@ -199,19 +199,17 @@
 	$th = Loader::helper('concrete/urls');
 	$ajax_url = "'" . BASE_URL . $th->getToolsURL('order.php', 'tomoac_button') ."'";
 
-	if($bID > 0) {
-
-		echo '
+	echo '
 <style type="text/css">
 a.moveUpLink   { display:block; background:url('.DIR_REL.'/concrete/images/icons/arrow_up.png)   no-repeat center; height:10px; width:16px; }
 a.moveDownLink { display:block; background:url('.DIR_REL.'/concrete/images/icons/arrow_down.png) no-repeat center; height:10px; width:16px; }
 </style>
 ';
-		echo "\n";
-		echo '
+	echo "\n";
+	echo '
 <script type="text/javascript">
 ';
-			echo "
+	echo "
 function moveUp( n, bid ){
 	if($('#'+(n-1)).text() != '') {
 		var a = $('#'+n).text()
@@ -248,29 +246,23 @@ function saveOrder(t, bid){
 	});
 }
 ";
-			echo '
+	echo '
 -->
 </script>
 ';
-		echo '<br />'.t('Change Order').'<table width=30%">'."\n";
-		$i = 0;
-		foreach($option as $op) {
-			if(empty($op)) continue;
-			echo '<tr><td>&nbsp;'.($i+1).'.&nbsp;</td><td id="'.$i.'">';
-			echo $op;
-			echo '</td><td>';
-			echo '<a onclick="moveUp('.$i.','.$bID.');  return false" class="moveUpLink"></a>';
-			echo '<a onclick="moveDown('.$i.','.$bID.');return false" class="moveDownLink"></a>';
-			echo '</td></tr>'."\n";
-			$i++;
-		}
-		echo '</table>'."\n";
+	echo '<br />'.t('Change Order').'<table width=30%">'."\n";
+	$i = 0;
+	foreach($option as $op) {
+		if(empty($op)) continue;
+		echo '<tr><td>&nbsp;'.($i+1).'.&nbsp;</td><td id="'.$i.'">';
+		echo $op;
+		echo '</td><td>';
+		echo '<a onclick="moveUp('.$i.','.$bID.');  return false" class="moveUpLink"></a>';
+		echo '<a onclick="moveDown('.$i.','.$bID.');return false" class="moveDownLink"></a>';
+		echo '</td></tr>'."\n";
+		$i++;
 	}
-
-	echo '<br /><table>';
-	echo '<tr><td>';
-	echo '</td></tr>';
-	echo '</table>';
+	echo '</table>'."\n";
 ?>
 </div>
 

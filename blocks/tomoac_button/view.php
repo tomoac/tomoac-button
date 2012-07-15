@@ -1,9 +1,5 @@
 <?php  defined('C5_EXECUTE') or die(_("Access Denied.")); ?>
 
-<!--
-<div>
-<table border="0"><tr><td>
--->
 <?php
 	$option = explode('/', $options);
 	foreach($option as $op) {
@@ -34,7 +30,3 @@
 //		echo '</div>';
 	}
 ?>
-<!--
-</td></tr></table>
-</div>
--->

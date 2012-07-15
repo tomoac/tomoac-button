@@ -13,8 +13,16 @@
 		if(count($option) <= 1)
 			$option = array('twitter','googleplusone','hatena','mixi','facebook') ;
 	}
-	else
-		$option = array('twitter','googleplusone','hatena','mixi','facebook') ;
+	else {
+		$options = array('twitter/googleplusone/hatena/mixi/facebook','');
+		$bIDs = $db->getOne("SELECT count(*) AS total from btTomoacButton WHERE bID=0");
+		if($bIDs == 0)
+			$sql = "INSERT btTomoacButton (options, contents) VALUES (?,?)";
+		else
+			$sql = "UPDATE btTomoacButton SET options=?, contents=? WHERE bID=0";
+		$rows = $db->query($sql, $options);
+		$option = explode('/', $options[0]);
+	}
 ?>
 <ul class="ccm-dialog-tabs" id="ccm-button-tabs">
 <?php
@@ -251,6 +259,7 @@ function saveOrder(t, bid){
 </script>
 ';
 	echo '<br />'.t('Change Order').'<table width=30%">'."\n";
+	if($bID == '') $bID = 0;
 	$i = 0;
 	foreach($option as $op) {
 		if(empty($op)) continue;

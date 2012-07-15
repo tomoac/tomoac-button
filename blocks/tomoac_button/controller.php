@@ -16,7 +16,6 @@ class TomoacButtonBlockController extends BlockController {
 	}
 
 	function view(){
-		
 //		error_log('view bid='.$this->bID,0);
 
 		$page = Page::getCurrentPage();
@@ -37,7 +36,6 @@ class TomoacButtonBlockController extends BlockController {
 		if(empty($options))
 			$options = "twitter/googleplusone/hatena/mixi/facebook";
 		$this->set('options',$options);
-
 
 		foreach($contents as $content) {
 //			error_log($content->{'kinda'}.'('.$content->{'onoff'}.')',0);
@@ -142,7 +140,6 @@ class TomoacButtonBlockController extends BlockController {
 	}
 
 	function save( $data ) {
-
 //		error_log('save bid='.$this->bID,0);
 
 		$bID = $this->bID;
@@ -194,17 +191,15 @@ class TomoacButtonBlockController extends BlockController {
 	function update_database ( $bID, $contents ) {
 		$db = Loader::db();
 		if(intval($bID) > 0) {
-			$q = "SELECT count(*) AS total FROM btTomoacButton WHERE bID=$bID";
+			$q = "SELECT count(*) AS total FROM btTomoacButton WHERE bID=0";
 			$total = $db->getOne($q);
 		} else 
 			$total = 0;
 
-		if( intval($total) == 0 ) { 
-			$vals = array( intval($bID), $contents);
+		$vals = array( intval($bID), $contents);
+		if( intval($total) == 0 )
 			$db->query("INSERT INTO btTomoacButton (bID, contents ) values (?,?)", $vals);
-		} else {
-			$vals = array( $contents, intval($bID));
-			$db->query("UPDATE btTomoacButton set contents=? WHERE bID=?", $vals);
-		}
+		else
+			$db->query("UPDATE btTomoacButton set bID=?, contents=? WHERE bID=0", $vals);
 	}
 }

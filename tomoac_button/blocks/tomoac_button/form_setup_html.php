@@ -84,7 +84,7 @@
 	echo '<br /><table>';
 	echo '<tr><td>';
 	echo $form->radio('googleplusone_onoff','on',($googleplusone_onoff == 'on') or (!$googleplusone_onoff)) . '表示';
-	echo $form->radio('googleplusone_onoff','of',($googleplusone_onoff == 'off')) . '非表示';
+	echo $form->radio('googleplusone_onoff','off',($googleplusone_onoff == 'off')) . '非表示';
 	echo '</td></tr>';
 	echo '<tr><td>'.'ボタンサイズ'.'</td><td>'.$form->select('googleplusone_buttonsize', array(
 							'small'=>'小（15px）',
@@ -110,7 +110,7 @@
 	echo '<br /><table>';
 	echo '<tr><td>';
 	echo $form->radio('hatena_onoff','on',($hatena_onoff == 'on') or (!$hatena_onoff)) . '表示';
-	echo $form->radio('hatena_onoff','of',($hatena_onoff == 'off')) . '非表示';
+	echo $form->radio('hatena_onoff','off',($hatena_onoff == 'off')) . '非表示';
 	echo '</td></tr>';
 	echo '<tr><td>'.'ボタンタイプ'.'</td><td>'.$form->select('hatena_buttontype', array(
 							'standard'=>'スタンダード',
@@ -136,7 +136,7 @@
 	echo '<br /><table>';
 	echo '<tr><td>';
 	echo $form->radio('mixi_onoff','on',($mixi_onoff == 'on') or (!$mixi_onoff)) . '表示';
-	echo $form->radio('mixi_onoff','of',($mixi_onoff == 'off')) . '非表示';
+	echo $form->radio('mixi_onoff','off',($mixi_onoff == 'off')) . '非表示';
 	echo '</td></tr>';
 	echo '<tr><td>'.'mixiチェックキー(必須)'.'</td><td>'.'&nbsp;'.$form->text('mixi_key', $mixi_key)."</td></tr>";
 	echo '<tr><td>'.'mixiボタンタイプ'.'</td><td>'.$form->select('mixi_buttontype', array(
@@ -172,7 +172,7 @@
 	echo '<br /><table>';
 	echo '<tr><td>';
 	echo $form->radio('facebook_onoff','on',($facebook_onoff == 'on') or (!$facebook_onoff)) . '表示';
-	echo $form->radio('facebook_onoff','of',($facebook_onoff == 'off')) . '非表示';
+	echo $form->radio('facebook_onoff','off',($facebook_onoff == 'off')) . '非表示';
 	echo '</td></tr>';
 //	echo '<tr><td>'.'AppID'.'</td><td>'.'&nbsp;'.$form->text('facebook_appid', $facebook_appid) . "</td></tr>";
 	echo '<tr><td>'.'送るボタン'.'</td><td>'.$form->checkbox('facebook_send', '1', $facebook_send)."</td></tr>";

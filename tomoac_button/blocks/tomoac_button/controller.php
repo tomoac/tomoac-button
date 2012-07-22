@@ -21,18 +21,13 @@ class TomoacButtonBlockController extends BlockController {
 		$page = Page::getCurrentPage();
 		$url = BASE_URL . DIR_REL . $page->getCollectionPath();
 
-		$db = Loader::db();
-
 		if(intval($this->bID) == 0)
 			return;
 
-		$this->set('bID',intval($this->bID));
+		$contents = json_decode($this->contents );
 
-		$rows = $db->query("SELECT * FROM btTomoacButton WHERE bID=$this->bID LIMIT 1");
-		$row = $rows->fetchrow();
-		$contents = json_decode( $row{'contents'} );
+		$options = $this->options;
 
-		$options = $row{'options'};
 		if(empty($options))
 			$options = "twitter/googleplusone/hatena/mixi/facebook";
 		$this->set('options',$options);
@@ -185,21 +180,9 @@ class TomoacButtonBlockController extends BlockController {
 		$facebook['font'] = $data['facebook_font'];
 		$contents[] = $facebook;
 
-		$this->update_database( $this->bID, json_encode( $contents ));
+		$arg['contents'] = json_encode($contents);
+		parent::save($arg);
+
 	}
 
-	function update_database ( $bID, $contents ) {
-		$db = Loader::db();
-		if(intval($bID) > 0) {
-			$q = "SELECT count(*) AS total FROM btTomoacButton WHERE bID=0";
-			$total = $db->getOne($q);
-		} else 
-			$total = 0;
-
-		$vals = array( intval($bID), $contents);
-		if( intval($total) == 0 )
-			$db->query("INSERT INTO btTomoacButton (bID, contents ) values (?,?)", $vals);
-		else
-			$db->query("UPDATE btTomoacButton set bID=?, contents=? WHERE bID=0", $vals);
-	}
 }

@@ -176,10 +176,10 @@ class TomoacButtonBlockController extends BlockController {
 		$facebook['kinda'] = 'facebook';
 		$facebook['onoff'] = $data['facebook_onoff'];
 		$facebook['appid'] = $data['facebook_appid'];
-		$facebook['send'] = $data['facebook_send']==1?'true':'false';
+		$facebook['send'] = $data['facebook_send'];
 		$facebook['layout'] = $data['facebook_layout'];
 		$facebook['width'] = $data['facebook_width'];
-		$facebook['showfaces'] = $data['facebook_showfaces']==1?'true':'false';
+		$facebook['showfaces'] = $data['facebook_showfaces'];
 		$facebook['verb'] = $data['facebook_verb'];
 		$facebook['color'] = $data['facebook_color'];
 		$facebook['font'] = $data['facebook_font'];

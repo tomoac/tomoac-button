@@ -159,10 +159,10 @@
 
 			$facebook_onoff = $content->{'onoff'};
 			$facebook_appid = $content->{'appid'};
-			$facebook_send = $content->{'send'}==1?'true':'false';
+			$facebook_send = $content->{'send'};
 			$facebook_layout = $content->{'layout'}!=''?$content->{'layout'}:'button_count';
 			$facebook_width = $content->{'width'}!=''?$content->{'width'}:450;
-			$facebook_showfaces = $content->{'showfaces'}==1?'true':'false';
+			$facebook_showfaces = $content->{'showfaces'};
 			$facebook_verb = $content->{'verb'}!=''?$content->{'verb'}:'like';
 			$facebook_color = $content->{'color'}!=''?$content->{'color'}:'light';
 			$facebook_font = $content->{'font'};
